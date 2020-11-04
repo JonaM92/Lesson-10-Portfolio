@@ -216,11 +216,11 @@ nav ul li a:hover, nav ul li a:focus {
 	nav {
 		 position: relative;
 		 background-color: #153259;
-		 top: 1em;                    /* Move navigation links up (as they no longer need to be below hamburger icon) */
+		 top: -1em;                    /* Move navigation links up (as they no longer need to be below hamburger icon) */
 	}
 	nav ul {
-		 max-height: 0.75em;           /* Adjust max-height to fit content horizontally rather than vertically */
-		 padding: 15px 0;
+		 max-height: 0.50em;           /* Adjust max-height to fit content horizontally rather than vertically */
+		 padding: 5px 0;
 	}
 	nav ul li {
 		 display: inline-block;        /* Display list items as an inline-block (on a single line) */
