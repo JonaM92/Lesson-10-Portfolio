@@ -6,34 +6,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Jona McDuffie Portfolio</title>
     <link rel="stylesheet" href="style.css" type="text/css" media="all">
-	<script src="" defer></script>
 </head>
 
 <body class="site">
     <a class="skip-link screen-reader-text" href="#content">Skip to content</a>
 
+ 
+    <section class="menu-wrap">
+        <input type="checkbox" id="checkbox"> 
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+        <label for="checkbox" class="menu-icon">☰</label>
+    </section>
+    <!-- .main-nav -->
     <header class="masthead">
-        <h1 class="site-title">Jona McDuffie Portfolio</h1>
+        <h1 class="site-title">Jona McDuffie Graphic and Web Design</h1>
     </header><!-- .masthead -->
-
-	<section class="main-nav">
-		<button class="trigger" aria-expanded="false">Menu<span class="screen-reader-text">Reveal menu</span></button>
-
-		<nav>
-			<ul>
-				<li><a href="#">Home</a></li>
-				<li><a href="#">About</a></li>
-				<li><a href="#">Contact</a></li>
-			</ul>
-		</nav>
-	</section><!-- .main-nav -->
+	
 
     <main id="content" class="main-area">
         <ul class="cards">
             <li class="card-item double">
                 <a href="#">
                     <figure class="card">
-                        <img src="images/port-logo.jpg" alt="Logo with a thin outline of a bird.">
+                        <img src="images/port-logo.jpg" alt="Logo with a thin outline of a bird leads to logo design section.">
                         <figcaption class="caption">
                             <h3 class="caption-title">Logo Design</h3>
 							<p></p>
@@ -90,7 +91,7 @@
                     <figure class="card">
                         <img src="images/port-video.jpg" alt="Still shot of video play button over dark water with browning leaves on top of the surface.">
                         <figcaption class="caption">
-                            <h3 class="caption-title">Video</h3>
+                            <h3 class="caption-title">Video Production</h3>
 							<p></p>
                         </figcaption>
                     </figure>
@@ -101,9 +102,19 @@
     </main>
 
 	<footer class="footer">
-		<p>Jona McDuffie Design</p>
+        	  <!-- Footer Section -->
+        <section class="footer" id="contact">
+          <h2 class="hidden"></h2>
+            <a href="https://www.instagram.com/ishottheserif/" class="fa fa-instagram" target="_blank"></a>
+            <a href="https://www.facebook.com/heyishottheserif/" class="fa fa-facebook" target="_blank"></a>
+            <a href="https://www.linkedin.com/in/jonamcduffie" class="fa fa-linkedin" target="_blank"></a>
+            
+        </section>
+                <!-- Copyrights Section -->
+        <div class="copyright">&copy;2020- <strong>JM DESIGNS</strong>
+              </div>
     </footer>
-<script src="functions.js"></script>
+
 </body>
 
 </html>

@@ -36,7 +36,7 @@ Typography
 --------------------------------------------------------------*/
 
 body {
-    margin: 0;
+	margin: 0;
     background-color:#FFF;
 }
 
@@ -130,6 +130,16 @@ figure {
 /*--------------------------------------------------------------
 General styling
 --------------------------------------------------------------*/
+html {
+    box-sizing: border-box;
+}
+* {
+	margin: 0;
+	padding: 0;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
 
 .site {
   max-width: 80em;  
@@ -150,59 +160,131 @@ img {
 .masthead {
     text-align: center;
     color: #FFF;
-    background-color: hsl(332, 22%, 45%);
-    border-bottom: 1px solid hsl(0, 0%, 90%);
-    padding: 1em;
+    background-color: #153259;
+    border-bottom: 3px solid #8C5A71;
+    padding: 2em;
 }
 
 /* Nav------------------*/
+.menu-wrap {                             /* .menu-wrap contains all parts of our responsive navigation */
+	height: 3em;                       /* Set default height for navigation */
+	background-color: #153259;          /* Set background color for entire navigation (useful for horizontal menu)*/
+	padding: 10px 15px;                /* Set padding around navigation */
+	/*position: fixed;*/               /* Uncomment out this line to lock navigation to top of window when scrolling */
+	width: 100%;                       /* Have navigation fill entire horizontal space */
+}
+.menu-icon {
+	font-size: 2em;                    /* Set size of hamburger menu icon */
+	color: #fff;                   /* Set color of hamburger menu icon */
 
-.main-nav {
-	padding: 1em;
-	font-size: 1.1em;
-	color: white;
-    background-color: hsl(0, 0%, 20%);
+}
+nav {
+	position: absolute;                /* Absolute positions nav on page */
+	background-color: #153259;           /* Set background color for nav (useful when nav becomes vertical)*/
+	color: #fff;
+	top: 3em;                        /* Add space to top of screen so links are below hamburger icon */
+	padding-bottom: 10px;
+	left:0;                            /* Navigation links should appear on left side of screen */
+	width: 100%;                       /* Similar to .menu-wrap, nav should fill entire horizontal space */
+}
+nav ul {
+	list-style-type: none;             /* Get rid of bullets on unordered list (navigation links) */
+	max-height: 0em;                   /* Section containing navigation links should be collapsed until hamburger menu icon is toggled */
+	overflow: hidden;                  /* Content of collapsed section should be hidden */
+	transition: max-height 0.5s;       /* Transition between opening and closing of navigation should take 0.5 seconds */
+}
+nav ul li a {
+	display: block;                    /* Links should be displayed as block (each link taking up its required space on a new line) */
+	padding: .75em 1.75em;             /* Set padding for each navigation link */
+	color: #fff;                       /* Set color for navigation links */
+	text-decoration: none;             /* Get rid of underlines on navigation links */
+}
+nav ul li a:hover, nav ul li a:focus {
+	color: #8C5A71;                       /* Change color of link when hovered over or focused on */
+}
+#checkbox {
+	display: none;                     /* Although the checkbox functionality is needed, we don't want to see the actual checkbox */
+}
+#checkbox:checked ~ nav ul {
+	max-height: 11em;                  /* When the checkbox is checked, expand the height of ul to reveal navigation */
+}
+/* desktop/large screen settings */
+@media (min-width: 768px) {             /* Media Query for larger screens */
+	.menu-icon {
+		 display: none;                /* Hide hamburger menu icon on larger screens */
+	}
+	nav {
+		 position: relative;
+		 background-color: #153259;
+		 top: 1em;                    /* Move navigation links up (as they no longer need to be below hamburger icon) */
+	}
+	nav ul {
+		 max-height: 0.75em;           /* Adjust max-height to fit content horizontally rather than vertically */
+		 padding: 15px 0;
+	}
+	nav ul li {
+		 display: inline-block;        /* Display list items as an inline-block (on a single line) */
+		 padding-left: 1em;            /* Add padding between horizontal links */
+		 
+	}
+
+	nav ul li {
+		color: #FFF;
+	}
+
+	nav ul li a {
+		color: #fff;                       /* Set color for navigation links */
+		text-decoration: none;             /* Get rid of underlines on navigation links */
+	}
+}
+/*
+.main-nav a {
+    text-decoration: none;
+	color: #F7FFF7;
 }
 
-.trigger {
-	display: none;
-	padding: .1em .5em;
-	color: white;
-	background: hsl(0, 0%, 20%);
-	border: none;
-	transform: rotate(-90deg);
-}
-
-.trigger:focus,
-.trigger:hover {
-	outline: 2px dotted hsl(0, 0%, 10%);
-}
-
-.trigger:focus {
-	outline-color: white;
-}
 
 .main-nav ul {
-	display: flex;
-	justify-content: center;
-	flex-wrap: wrap;
-	margin: 0;
-	padding: 0;
-	list-style-type: none;
+  text-align: center;
+  list-style: none;
+  color: #F7FFF7;
+  margin: 0;
 }
 
-.main-nav a {
-	display: block;
-	padding: .4em 1em;
-	color: white;
-	text-decoration: none;
+.main-nav ul li {
+  font: sans-serif;
+  font-weight: 400;
+  padding: 20px 40px;
+  cursor: pointer;
 }
 
-.main-nav a:focus,
-.main-nav a:hover {
-	text-decoration: underline;
+.main-nav ul li:hover {
+  background: #8C5A71;
 }
 
+.main-nav ul li ul {
+  padding: 0;
+  position: absolute;
+  top: 30px;
+  left: -10000px;  
+  width: 200px;
+  
+}
+
+.main-nav ul li ul li {
+  background: #343434;
+  display: block;
+}
+
+.main-nav li ul li:hover {
+  background: #8C5A71;
+}
+
+.main-nav ul li:hover ul {
+  display: block;
+  left: 0px;
+}
+*/
 /*--------------------------------------------------------------
 Cards:
 --------------------------------------------------------------*/
@@ -227,10 +309,7 @@ Cards:
 	transition: all .4s;
 }
 
-a:focus .caption,
-a:hover .caption {
-	background: hsla(214, 62%, 22%, 1);
-}
+
 
 .caption-title {
 	margin: 0;
@@ -241,28 +320,71 @@ a:hover .caption {
 /*--------------------------------------------------------------
 Footer:
 --------------------------------------------------------------*/
+
+
 footer {
-    background-color: hsl(0, 0%, 20%);
-    color: #FFF;
-    text-align: center;
-    padding: 1em;
+	background-color: hsl(0, 0%, 20%);
+	padding-top: 30px;
+	padding-bottom: 30PX;
+	text-align: center;
+	margin-bottom: 0px;
+	border-top: 3px solid #8C5A71;
+}
+
+
+.copyright {
+	text-align: center;
+	color: #FFFFFF;
+	text-transform: uppercase;
+	font-weight: lighter;
+	letter-spacing: 2px;
+	border-top-width: 2px;
 }
 /*--------------------------------------------------------------
 CSS Grid layout for wider screens, when browser supports grid:
 --------------------------------------------------------------*/
 @supports (grid-area: auto) {
 
-	@media screen and (min-width: 30em) {
+	@media screen and (min-width: 768px) {
         .site {
             max-width: none;
             display: grid;
             justify-content: center;
-            grid-template-areas: 
-            "header"
+     		grid-template-areas: 
+				"header header header"		
+                "main main main"
+                "footer footer footer";
+      
+		}
+		
+		
+		.cards {
+			grid-template-columns: repeat(3, 1fr);
+        }
+        .masthead {
+            grid-area: header;
+        }
+        .main-area {
+            grid-area: main;
+        }
+     
+	}
+
+	
+
+	@media screen and (min-width: 300px) {
+        .site {
+            max-width: none;
+            display: grid;
+            justify-content: center;
+			grid-template-areas: 
+			"nav"
+			"header"
             "main"
             "footer";
             
-        }
+		}
+
 
         .masthead {
             grid-area: header;
@@ -294,49 +416,21 @@ CSS Grid layout for wider screens, when browser supports grid:
 			align-items: flex-end;
 			opacity: 0;
 		}
-
-		a:focus .caption,
-		a:hover .caption {
-			background: hsla(214, 62%, 22%, .6);
-			opacity: 1;
-        }
         
-        .footer {
-            grid-area: footer;
-        }
+       
 
-        .main-nav {
-            position: relative;
-            grid-column: 1;
-            grid-row: 1/4;
-            left: -13em;
-            width: 12em;
-        }
-        .reveal .main-nav {
-            left: 0;
-        }
-        .main-nav ul {
-            flex-direction: column;
-        }
-        .reveal .trigger {
-            left: 14.5em;
-        }
-
-        .trigger {
-            position: fixed;
-            display: block;
-            top: 1.5em;
-            left: .2em;
-        }
+        
+       
     }
-    
+   /* 
     @media screen and (min-width: 60em) {
         .site {
             max-width: none;
             display: grid;
             justify-content: center;
             grid-template-areas: 
-            "header header"
+			"header header"
+			"nav nav nav"
             "main main"
             "footer footer";
             
@@ -351,43 +445,8 @@ CSS Grid layout for wider screens, when browser supports grid:
 			grid-template-columns: 1fr 1fr;
 			grid-gap: 1em;
         }
-        
-        
 
-        .footer {
-            grid-area: footer;
-        }
+        
     }
-
-	@media screen and (min-width: 80em) {
-        .site {
-            max-width: none;
-            display: grid;
-            justify-content: center;
-            .site {
-                max-width: none;
-                display: grid;
-                justify-content: center;
-                grid-template-areas: 
-                "header header header"
-                "main main main"
-                "footer footer footer";
-                
-            }
-            
-        }
-		.cards {
-			grid-template-columns: repeat(3, 1fr);
-        }
-        .masthead {
-            grid-area: header;
-        }
-        .main-area {
-            grid-area: main;
-        }
-        .footer {
-            grid-area: footer;
-        }
-	}
 
 }
